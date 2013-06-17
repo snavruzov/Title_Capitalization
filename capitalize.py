@@ -5,7 +5,7 @@ import wx
 
 def ShowTitle(event):
     labelValue = titleLabel.GetValue()
-    textArea.SetValue(capitalizeTitle(labelValue))
+    textArea.SetValue(capitalizeTitle(labelValue.strip()))
 
 
 def capitalizeTitle(value):
@@ -13,13 +13,13 @@ def capitalizeTitle(value):
     title = ""
     value = value.lower()
     splitWord = value.split(' ')
-    for word in splitWord:
+    for word in splitWord[1:]:
         if word not in lowerCaseConsts:
             title += " " + word.capitalize()
         else:
             title += " " + word
 
-    return title.strip()
+    return (splitWord[0].capitalize() + title).strip()
 
 
 app = wx.App()
